@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lead Response Recovery Demo</title>
+  <style>
+    :root { --ink:#17212b; --muted:#64748b; --line:#dbe3ec; --paper:#f7fafc; --blue:#1769aa; --green:#11875d; --amber:#9a6700; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; color:var(--ink); background:var(--paper); }
+    .wrap { max-width: 1120px; margin:0 auto; padding:34px 22px 60px; }
+    .top { display:flex; justify-content:space-between; gap:22px; align-items:flex-start; margin-bottom:30px; }
+    .eyebrow { color:var(--blue); font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:8px 0 10px; font-size:clamp(30px,5vw,52px); line-height:1.03; letter-spacing:-.04em; max-width:700px; }
+    .lede { color:var(--muted); max-width:700px; font-size:17px; line-height:1.55; margin:0; }
+    .badge { background:#e7f2fb; color:#0c4a76; border:1px solid #c6e1f5; padding:10px 13px; border-radius:999px; font-weight:700; white-space:nowrap; }
+    .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; box-shadow:0 8px 24px rgba(23,33,43,.04); }
+    .metric small { color:var(--muted); display:block; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+    .metric strong { display:block; font-size:30px; margin-top:9px; }
+    .metric span { color:var(--muted); font-size:13px; }
+    .section-title { margin:34px 0 12px; font-size:20px; }
+    .flow { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .step { position:relative; min-height:160px; }
+    .step:not(:last-child)::after { content:'→'; position:absolute; right:-14px; top:48px; color:#90a4b8; font-size:25px; font-weight:800; }
+    .num { width:30px; height:30px; border-radius:50%; background:#e7f2fb; color:var(--blue); display:grid; place-items:center; font-weight:800; margin-bottom:12px; }
+    .step h3 { margin:0 0 7px; font-size:16px; }
+    .step p { margin:0; color:var(--muted); line-height:1.45; font-size:14px; }
+    .panel { margin-top:22px; overflow:auto; }
+    table { border-collapse:collapse; width:100%; min-width:730px; background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+    th,td { text-align:left; padding:14px 16px; border-bottom:1px solid #edf1f5; font-size:14px; }
+    th { background:#f1f5f9; color:#475569; font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    .status { display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:5px 9px; font-weight:700; font-size:12px; }
+    .new { color:#075985; background:#e0f2fe; } .follow { color:#854d0e; background:#fef3c7; } .booked { color:#166534; background:#dcfce7; }
+    .bottom { display:grid; grid-template-columns:1.15fr .85fr; gap:14px; margin-top:22px; }
+    .bottom h2 { margin:0 0 10px; font-size:19px; }
+    .bottom p { color:var(--muted); line-height:1.5; margin:0; }
+    .price { font-size:30px; font-weight:850; color:var(--green); margin:8px 0; }
+    .fine { margin-top:16px; color:#7b8794; font-size:12px; line-height:1.45; }
+    @media (max-width: 800px) { .top { flex-direction:column; } .grid,.flow { grid-template-columns:repeat(2,1fr); } .step:not(:last-child)::after { display:none; } .bottom { grid-template-columns:1fr; } }
+    @media (max-width: 500px) { .grid,.flow { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <div class="eyebrow">Workflow proof / home services</div>
+        <h1>Turn new inquiries into tracked next actions.</h1>
+        <p class="lede">A lightweight lead-response system built around the tools a small service company already uses. It acknowledges the visitor, alerts the owner, and keeps follow-up visible without replacing human judgment.</p>
+      </div>
+      <div class="badge">TEST MODE · No messages sent</div>
+    </header>
+
+    <section class="grid" aria-label="Workflow metrics">
+      <div class="card metric"><small>New inquiries</small><strong>12</strong><span>last 7 days</span></div>
+      <div class="card metric"><small>Acknowledged</small><strong>12/12</strong><span>automatic receipt</span></div>
+      <div class="card metric"><small>Follow-up queue</small><strong>4</strong><span>human action needed</span></div>
+      <div class="card metric"><small>Tool cost</small><strong>$0</strong><span>demo configuration</span></div>
+    </section>
+
+    <h2 class="section-title">How the workflow works</h2>
+    <section class="flow">
+      <article class="card step"><div class="num">1</div><h3>Inquiry arrives</h3><p>A visitor submits service details, contact information, and a preferred time.</p></article>
+      <article class="card step"><div class="num">2</div><h3>Receipt is sent</h3><p>The visitor receives a clear confirmation and the next step, such as a booking link.</p></article>
+      <article class="card step"><div class="num">3</div><h3>Owner is alerted</h3><p>A concise summary is added to the pipeline so the right person can respond.</p></article>
+      <article class="card step"><div class="num">4</div><h3>Follow-up is visible</h3><p>A next-action time is created. The owner can update the status after speaking with the lead.</p></article>
+    </section>
+
+    <h2 class="section-title">Example pipeline</h2>
+    <section class="panel">
+      <table>
+        <thead><tr><th>Lead</th><th>Request</th><th>Priority</th><th>Next action</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Jordan M.</td><td>Emergency plumbing repair</td><td>8/9</td><td>Call now</td><td><span class="status new">New</span></td></tr>
+          <tr><td>Casey R.</td><td>AC maintenance quote</td><td>6/9</td><td>Follow up tomorrow</td><td><span class="status follow">Follow-up due</span></td></tr>
+          <tr><td>Taylor K.</td><td>Water heater replacement</td><td>9/9</td><td>Confirm appointment</td><td><span class="status booked">Booked</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="bottom">
+      <div class="card"><h2>Human-in-the-loop by design</h2><p>The workflow does not quote jobs, diagnose problems, or make promises to customers. It handles acknowledgement, organization, and reminders while the business owner controls pricing, scheduling, and service decisions.</p><p class="fine">This is a demonstration. The actual client workflow is configured and tested against the client’s forms, inbox, and policies before any production use.</p></div>
+      <div class="card"><h2>Founding-client pilot</h2><div class="price">$149 fixed</div><p>Two-day setup, customized messages, owner alert, follow-up queue, five test submissions, and a handoff guide.</p><p class="fine">No paid software is included. Any third-party subscription or messaging cost is approved separately by the client.</p></div>
+    </section>
+  </main>
+</body>
+</html>
