@@ -18,17 +18,19 @@ The offer is not an AI chatbot. It is a **lead-response and follow-up workflow**
 
 ## Files
 
-`apps-script-demo/Code.gs` contains the demonstration script. It starts in `TEST_MODE`, so it logs what would happen rather than sending real messages. The script supports common form-field labels but should be tested against the client’s actual form before use.
+`Code.gs` contains the demonstration script. It starts in `TEST_MODE`, so it logs what would happen rather than sending real messages. The script supports common form-field labels but should be tested against the client’s actual form before use.
+
+`demo.html` is a self-contained visual walkthrough of the workflow. `offer-sheet.md` explains the productized pilot. `execution-brief.md` records the market and offer rationale.
 
 ## Safe setup sequence
 
-First, create a copy of the Google Form and its linked response Sheet. Then paste the script into the Sheet’s Apps Script editor, update the business name, owner email, and booking URL, and install an `On form submit` trigger for `onFormSubmit`. Run several test submissions using internal email addresses. Only after reviewing the content and permissions should `TEST_MODE` be changed to `false`.
+First, create a copy of the Google Form and its linked response Sheet. Then paste `Code.gs` into the Sheet’s Apps Script editor, update the business name, owner email, and booking URL, and install an `On form submit` trigger for `onFormSubmit`. Run several test submissions using internal email addresses. Only after reviewing the content and permissions should `TEST_MODE` be changed to `false`.
 
 The follow-up function is intentionally separate from the submission trigger. This keeps the first response fast and makes the second touch easy to review. A client should use a low-volume, permission-based workflow rather than a bulk cold-email system.
 
 ## Scope and safeguards
 
-This demo does not make promises about conversion rates, provide legal or medical advice, send bulk email, or automatically quote jobs. It requires human review before pricing or scheduling. It should be used only for inquiries the business is permitted to contact. Google Apps Script quotas and limits can change, so production volume must be monitored. See the official quota documentation in the sales-assets folder.
+This demo does not make promises about conversion rates, provide legal or medical advice, send bulk email, or automatically quote jobs. It requires human review before pricing or scheduling. It should be used only for inquiries the business is permitted to contact. Google Apps Script quotas and limits can change, so production volume must be monitored. See the official [Google Apps Script quota documentation](https://developers.google.com/apps-script/guides/services/quotas).
 
 ## Suggested paid pilot
 
